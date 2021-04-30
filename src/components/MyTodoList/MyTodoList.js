@@ -1,6 +1,7 @@
 import "./MyTodoList.css";
 import React from "react";
 import Task from "../Task/Task";
+import TaskAdd from "../TaskAdd/TaskAdd";
 
 class MyTodoList extends React.Component {
   state = {
@@ -37,24 +38,57 @@ class MyTodoList extends React.Component {
         completed: false,
       },
     ],
+    lastID: 5,
   };
 
   compliteTask = (id, completed) => {
-    console.log(`Task ${id} completed status = ${completed}`);
+    this.setState((currentState) => {
+      const index = currentState.tasks.findIndex((e) => e.id === id);
+
+      currentState.tasks[index] = {
+        ...currentState.tasks[index],
+        completed: !completed,
+      };
+
+      return {
+        tasks: currentState.tasks,
+      };
+    });
+  };
+
+  addTask = (name, description) => {
+    this.setState((currentState) => {
+      const newTask = {
+        id: ++currentState.lastID,
+        name: name,
+        description: description,
+        completed: false,
+      };
+
+      const newTasks = [newTask, ...currentState.tasks];
+
+      return {
+        lastID: currentState.lastID,
+        tasks: newTasks,
+      };
+    });
   };
 
   render() {
     return (
-      <div id="task-list">
-        {this.state.tasks.map((task) => (
-          <Task
-            key={task.id.toString()}
-            name={task.name}
-            description={task.description}
-            completed={task.completed}
-            onClick={() => this.compliteTask(task.id, task.completed)}
-          />
-        ))}
+      <div>
+        <TaskAdd addTask={this.addTask} />
+        <div id="task-list">
+          {this.state.tasks.map((task) => (
+            <Task
+              key={task.id.toString()}
+              name={task.name}
+              description={task.description}
+              completed={task.completed}
+              onClick={() => this.compliteTask(task.id, task.completed)}
+            />
+          ))}
+        </div>
       </div>
     );
   }
