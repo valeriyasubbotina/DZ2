@@ -41,7 +41,7 @@ class MyTodoList extends React.Component {
     lastID: 5,
   };
 
-  compliteTask = (id, completed) => {
+  completeTask = (id, completed) => {
     this.setState((currentState) => {
       const index = currentState.tasks.findIndex((e) => e.id === id);
 
@@ -85,7 +85,7 @@ class MyTodoList extends React.Component {
               name={task.name}
               description={task.description}
               completed={task.completed}
-              onClick={() => this.compliteTask(task.id, task.completed)}
+              onClick={() => this.completeTask(task.id, task.completed)}
             />
           ))}
         </div>
