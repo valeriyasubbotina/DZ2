@@ -1,7 +1,14 @@
-import "./TaskAdd.css";
 import React from "react";
 
+import classNames from "classnames/bind";
+import styles from "./TaskAdd.module.scss";
+import { ThemeContext } from "../../theme-context";
+
+const cx = classNames.bind(styles);
+
 class TaskAdd extends React.Component {
+  static contextType = ThemeContext;
+
   state = {
     name: "",
     description: "",
@@ -20,9 +27,10 @@ class TaskAdd extends React.Component {
   };
 
   render() {
+    let theme = this.context;
     return (
-      <div id="task-add">
-        <div className="input">
+      <div className={cx("task-add", { [`task-add-${theme}`]: true })}>
+        <div className={cx("input", { [`input-${theme}`]: true })}>
           <label htmlFor="name">Введите название задачи</label>
           <input
             type="text"
@@ -32,7 +40,7 @@ class TaskAdd extends React.Component {
           />
         </div>
 
-        <div className="input">
+        <div className={cx("input", { [`input-${theme}`]: true })}>
           <label htmlFor="description">Введите описание задачи</label>
           <input
             type="text"
@@ -44,7 +52,7 @@ class TaskAdd extends React.Component {
 
         <div id="actions">
           <button
-            id="add-button"
+            className={cx("add-button", { [`add-button-${theme}`]: true })}
             onClick={this.handleAddClick}
             disabled={!this.state.name || !this.state.description}
           >

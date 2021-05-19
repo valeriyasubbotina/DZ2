@@ -1,9 +1,16 @@
-import "./MyTodoList.css";
 import React from "react";
 import Task from "../Task/Task";
 import TaskAdd from "../TaskAdd/TaskAdd";
 
+import classNames from "classnames/bind";
+import styles from "./MyTodoList.module.scss";
+import { ThemeContext } from "../../theme-context";
+
+const cx = classNames.bind(styles);
+
 class MyTodoList extends React.Component {
+  static contextType = ThemeContext;
+
   state = {
     tasks: [
       {
@@ -75,10 +82,11 @@ class MyTodoList extends React.Component {
   };
 
   render() {
+    let theme = this.context;
     return (
       <div>
         <TaskAdd addTask={this.addTask} />
-        <div id="task-list">
+        <div className={cx("task-list", { [`task-list-${theme}`]: true })}>
           {this.state.tasks.map((task) => (
             <Task
               key={task.id.toString()}

@@ -1,0 +1,17 @@
+.App {
+  text-align: center;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: calc(100vh - 60px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 60px;
+  &-light {
+    background-image: url(https://puzzleit.ru/files/puzzles/211/210738/_original.jpg);
+  }
+  &-dark {
+    background-image: url(https://i.pinimg.com/originals/ed/b6/ae/edb6ae69257e86d9ba21ef708b1efc0d.png);
+  }
+}

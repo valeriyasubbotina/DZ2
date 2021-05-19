@@ -1,9 +1,12 @@
-import "./App.css";
 import React from "react";
 import MyTodoList from "../MyTodoList/MyTodoList";
 import Toolbar from "../Toolbar/Toolbar";
 
-const ThemeContext = React.createContext("light");
+import classNames from "classnames/bind";
+import styles from "./App.module.scss";
+import { ThemeContext } from "../../theme-context";
+
+const cx = classNames.bind(styles);
 
 class App extends React.Component {
   state = {
@@ -19,7 +22,7 @@ class App extends React.Component {
   render() {
     return (
       <ThemeContext.Provider value={this.state.theme}>
-        <div className="App">
+        <div className={cx("App", { [`App-${this.state.theme}`]: true })}>
           <Toolbar changeTheme={this.toggleTheme} />
           <MyTodoList />
         </div>
