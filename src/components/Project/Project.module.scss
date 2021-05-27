@@ -1,0 +1,26 @@
+@import "../../vars.module.scss";
+
+.project {
+  border-radius: 10px;
+  padding: 20px;
+  margin: 5px 0;
+  text-align: left;
+
+  &-light {
+    background-color: $alt-background-color-light;
+  }
+  &-dark {
+    background-color: $alt-background-color-dark;
+  }
+
+  &-title {
+    font-size: 18px;
+
+    &-light {
+      color: $title-color-light;
+    }
+    &-dark {
+      color: $title-color-dark;
+    }
+  }
+}

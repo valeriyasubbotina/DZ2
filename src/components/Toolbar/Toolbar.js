@@ -4,6 +4,8 @@ import classNames from "classnames/bind";
 import styles from "./Toolbar.module.scss";
 import { ThemeContext } from "../../theme-context";
 
+import { Link } from "react-router-dom";
+
 const cx = classNames.bind(styles);
 
 function Toolbar(props, context) {
@@ -11,13 +13,24 @@ function Toolbar(props, context) {
     <ThemeContext.Consumer>
       {(theme) => (
         <div className={cx("toolbar", { [`toolbar-${theme}`]: true })}>
-          <h1
-            className={cx("toolbar-title", {
-              [`toolbar-title-${theme}`]: true,
-            })}
-          >
-            My To-Do List
-          </h1>
+          <div className={cx("toolbar-left")}>
+            <h1
+              className={cx("toolbar-left-title", {
+                [`toolbar-left-title-${theme}`]: true,
+              })}
+            >
+              My To-Do List
+            </h1>
+
+            <Link
+              to="/"
+              className={cx("toolbar-left-link", {
+                [`toolbar-left-link-${theme}`]: true,
+              })}
+            >
+              Проекты
+            </Link>
+          </div>
 
           <div className={cx("toggler")}>
             <img

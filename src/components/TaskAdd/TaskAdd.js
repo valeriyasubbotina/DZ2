@@ -30,6 +30,13 @@ class TaskAdd extends React.Component {
     let theme = this.context;
     return (
       <div className={cx("task-add", { [`task-add-${theme}`]: true })}>
+        <h1
+          className={cx("task-add-title", {
+            [`task-add-title-${theme}`]: true,
+          })}
+        >
+          Добавление новой задачи к проекту
+        </h1>
         <div className={cx("input", { [`input-${theme}`]: true })}>
           <label htmlFor="name">Введите название задачи</label>
           <input
