@@ -1,0 +1,94 @@
+@import "../../vars.module.scss";
+
+.task {
+  display: flex;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 5px 0;
+  justify-content: space-between;
+  text-align: left;
+
+  &-light {
+    background-color: $alt-background-color-light;
+  }
+  &-dark {
+    background-color: $alt-background-color-dark;
+  }
+
+  &-info {
+    padding-right: 20px;
+  }
+
+  &-name {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 6px;
+
+    &-light {
+      color: $title-color-light;
+    }
+    &-dark {
+      color: $title-color-dark;
+    }
+  }
+
+  &-description {
+    font-size: 14px;
+    color: rgb(226, 222, 225);
+    text-align: justify;
+    margin-bottom: 6px;
+
+    &-light {
+      color: $additional-text-color-light;
+    }
+    &-dark {
+      color: $additional-text-color-dark;
+    }
+  }
+
+  &-actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 100px;
+
+    &-completed {
+      font-size: 13px;
+      margin-bottom: 10px;
+
+      &-light {
+        color: $text-color-light;
+      }
+      &-dark {
+        color: $text-color-dark;
+      }
+    }
+
+    &-button {
+      border-radius: 5px;
+      border: none;
+      width: 90px;
+      cursor: pointer;
+      padding: 5px;
+
+      &-light {
+        background-color: $button-color-light;
+        color: $text-color-light;
+        &:hover {
+          background-color: $hover-color-light;
+          color: $hover-text-color-light;
+        }
+      }
+
+      &-dark {
+        background-color: $button-color-dark;
+        color: $text-color-dark;
+        &:hover {
+          background-color: $hover-color-dark;
+          color: $hover-text-color-dark;
+        }
+      }
+    }
+  }
+}

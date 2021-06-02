@@ -1,0 +1,43 @@
+// dark theme
+//bachground
+$main-background-color-dark: #101010;
+$alt-background-color-dark: #202020;
+
+//text
+$title-color-dark: rgb(92, 29, 238);
+$additional-text-color-dark: rgb(161, 207, 197);
+$text-color-dark: #fff;
+
+// icons and borders
+$icon-filter-dark: invert(99%) sepia(96%) saturate(17%) hue-rotate(158deg)
+  brightness(105%) contrast(100%);
+$border-color-dark: #fefefe;
+
+//buttons
+$button-color-dark: #108b85;
+$hover-color-dark: #4f0ba8;
+$hover-text-color-dark: rgb(141, 141, 141);
+$disabled-color-dark: #193837;
+$disabled-text-color-dark: rgb(70, 69, 69);
+
+// light theme
+//bachground
+$main-background-color-light: rgb(170, 213, 235);
+$alt-background-color-light: rgb(185, 141, 190);
+
+//text
+$title-color-light: rgb(220, 54, 142);
+$additional-text-color-light: rgb(226, 222, 225);
+$text-color-light: #613d4e;
+
+// icons and borders
+$icon-filter-light: invert(0%) sepia(98%) saturate(0%) hue-rotate(13deg)
+  brightness(95%) contrast(105%);
+$border-color-light: #fefefe;
+
+//buttons
+$button-color-light: #fae7f0;
+$hover-color-light: #fa70b1;
+$hover-text-color-light: #fff;
+$disabled-color-light: #838182;
+$disabled-text-color-light: rgb(219, 219, 219);
