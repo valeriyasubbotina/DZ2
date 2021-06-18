@@ -42,3 +42,24 @@
     }
   }
 }
+
+.task-list-loading {
+  width: 300px;
+  padding: 20px;
+  border-radius: 20px;
+  max-height: 800px;
+  overflow-y: auto;
+  margin: 0 auto;
+
+  &-light {
+    background-color: $main-background-color-light;
+    border: 1px solid $border-color-light;
+    color: $text-color-light;
+  }
+
+  &-dark {
+    background-color: $main-background-color-dark;
+    border: 1px solid $border-color-dark;
+    color: $text-color-dark;
+  }
+}

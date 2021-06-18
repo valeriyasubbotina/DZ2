@@ -15,11 +15,15 @@ import {
   withRouter,
 } from "react-router-dom";
 
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
 import { rootReducer } from "../../reducers/index";
 import { Provider } from "react-redux";
+import { handleLoadProjects } from "../../actions/project";
 
-let store = createStore(rootReducer);
+let store = createStore(rootReducer, applyMiddleware(thunk));
+
+store.dispatch(handleLoadProjects());
 
 const cx = classNames.bind(styles);
 

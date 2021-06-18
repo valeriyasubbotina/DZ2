@@ -13,9 +13,7 @@ import { connect } from "react-redux";
 const cx = classNames.bind(styles);
 
 const mapStateToProps = (state) => ({
-  projects: Object.keys(state.projects.projectsById).map(
-    (id) => state.projects.projectsById[id]
-  ),
+  projects: Object.values(state.projects.projectsById),
 });
 
 class ProjectListComponent extends React.Component {
@@ -35,12 +33,21 @@ class ProjectListComponent extends React.Component {
           >
             Проекты
           </h1>
+          {this.props.projects.length === 0 && (
+            <h3
+              className={cx("project-list-no-projects", {
+                [`project-list-no-projects-${theme}`]: true,
+              })}
+            >
+              Нет проектов
+            </h3>
+          )}
           {this.props.projects.map((project) => (
             <Link
               to={`/project/${project.id.toString()}`}
               key={project.id.toString()}
             >
-              <Project name={project.name} />
+              <Project name={project.name} tasksCount={project.tasksCount} />
             </Link>
           ))}
         </div>

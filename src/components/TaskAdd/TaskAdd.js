@@ -6,7 +6,6 @@ import { ThemeContext } from "../../theme-context";
 
 import { connect } from "react-redux";
 import { handleTaskAdd } from "../../actions/task";
-import { handleProjectAddTask } from "../../actions/project";
 
 const cx = classNames.bind(styles);
 
@@ -17,9 +16,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   dispatchOnTaskAdd: (name, description, projectId) =>
     dispatch(handleTaskAdd(name, description, projectId)),
-  dispatchOnProjectAddTask: (projectId, taskId) => {
-    dispatch(handleProjectAddTask(projectId, taskId));
-  },
 });
 
 class TaskAddComponent extends React.Component {
@@ -39,15 +35,11 @@ class TaskAddComponent extends React.Component {
   };
 
   handleAddClick = () => {
-    const taskId = this.props.lastTaskId + 1;
-
     this.props.dispatchOnTaskAdd(
       this.state.name,
       this.state.description,
       this.props.projectId
     );
-
-    this.props.dispatchOnProjectAddTask(this.props.projectId, taskId);
   };
 
   render() {

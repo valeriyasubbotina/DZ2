@@ -31,6 +31,17 @@
     }
   }
 
+  &-no-projects {
+    font-size: 16px;
+
+    &-light {
+      color: $title-color-light;
+    }
+    &-dark {
+      color: $title-color-dark;
+    }
+  }
+
   a {
     text-decoration: none;
   }
