@@ -1,0 +1,56 @@
+[
+    {
+        "id": 1,
+        "name": "Домашние дела",
+        "tasks": [
+            {
+                "id": 1,
+                "name": "Постирать спортивную форму",
+                "description": "lorem qe qe qwe qeq weqwe qwe qwe eqw eqweqwe qw eqweq eqe qw eqw eqwe qwe qe qe qweq q qeqweqeqweq eq eqe q",
+                "completed": false
+            },
+            {
+                "id": 2,
+                "name": "Написать темы постов",
+                "description": "До 21 числа сдать темы в редакцию",
+                "completed": false
+            },
+            {
+                "id": 3,
+                "name": "Скачать фильмы в дорогу",
+                "description": "В джазе только девушки и Голодные игры",
+                "completed": false
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Универ",
+        "tasks": [
+            {
+                "id": 4,
+                "name": "Сделать домашнее задание",
+                "description": "Просмотр лекции по Реакту и написание кода",
+                "completed": true
+            },
+            {
+                "id": 5,
+                "name": "Написать на почту ЕВ",
+                "description": "Вопрос по модели в курсовой работе",
+                "completed": false
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Список покупок",
+        "tasks": [
+            {
+                "id": 6,
+                "name": "Купить молоко и хлопья",
+                "description": "На завтрак завтра",
+                "completed": false
+            }
+        ]
+    }
+]

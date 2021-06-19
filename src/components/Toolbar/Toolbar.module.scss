@@ -103,18 +103,45 @@ path {
     }
   }
 
-  &-title {
-    font-size: 32px;
-    font-weight: 800;
-    padding: 20px 0;
-    font-style: italic;
+  &-left {
+    display: flex;
+    align-items: center;
 
-    &-light {
-      color: $title-color-light;
+    &-title {
+      font-size: 32px;
+      font-weight: 800;
+      padding: 20px 0;
+      font-style: italic;
+
+      &-light {
+        color: $title-color-light;
+      }
+
+      &-dark {
+        color: $title-color-dark;
+      }
     }
 
-    &-dark {
-      color: $title-color-dark;
+    &-link {
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: 600;
+
+      &-light {
+        color: $text-color-light;
+
+        &:hover {
+          color: $hover-color-light;
+        }
+      }
+
+      &-dark {
+        color: $text-color-dark;
+
+        &:hover {
+          color: $hover-color-dark;
+        }
+      }
     }
   }
 }
