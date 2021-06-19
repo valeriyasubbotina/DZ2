@@ -6,7 +6,7 @@ import { ThemeContext } from "../../theme-context";
 
 const cx = classNames.bind(styles);
 
-const Project = ({ name }) => (
+const Project = ({ name, tasksCount }) => (
   <ThemeContext.Consumer>
     {(theme) => (
       <div className={cx("project", { [`project-${theme}`]: true })}>
@@ -15,6 +15,13 @@ const Project = ({ name }) => (
         >
           {name}
         </h1>
+        <p
+          className={cx("project-description", {
+            [`project-description-${theme}`]: true,
+          })}
+        >
+          Количество задач: {tasksCount}
+        </p>
       </div>
     )}
   </ThemeContext.Consumer>

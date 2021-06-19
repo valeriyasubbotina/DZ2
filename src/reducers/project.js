@@ -1,44 +1,26 @@
-import { PROJECT_ADD, PROJECT_ADD_TASK } from "../actions/project";
-import normalizeState from "../normalizeState";
-
-const projects = require("../projects.json");
+import { PROJECT_ADD, PROJECTS_LOADED } from "../actions/project";
+import { normalizeProjects } from "../normalizeState";
 
 const initialState = {
-  lastProjectId: 3,
-  projectsById: normalizeState(projects).projectsById,
+  projectsById: [],
 };
 
 export const projectsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case PROJECT_ADD: {
-      const newProject = {
-        id: ++state.lastProjectId,
-        name: action.payload,
-        tasksIds: [],
-      };
+    case PROJECTS_LOADED: {
+      if (action.payload === undefined) return state;
 
       return {
         ...state,
-        lastProjectId: state.lastProjectId,
-        projectsById: {
-          ...state.projectsById,
-          [newProject.id]: newProject,
-        },
+        projectsById: normalizeProjects(action.payload),
       };
     }
-    case PROJECT_ADD_TASK: {
-      const oldProject = state.projectsById[action.payload.projectId];
-
-      const newProject = {
-        ...oldProject,
-        tasksIds: [...oldProject.tasksIds, action.payload.taskId],
-      };
-
+    case PROJECT_ADD: {
       return {
         ...state,
         projectsById: {
           ...state.projectsById,
-          [action.payload.projectId]: newProject,
+          [action.payload.id]: action.payload,
         },
       };
     }

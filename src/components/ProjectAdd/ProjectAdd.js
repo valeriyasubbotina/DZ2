@@ -44,7 +44,7 @@ class ProjectAddComponent extends React.Component {
           <input
             type="text"
             id="name"
-            placeholder="Название задачи"
+            placeholder="Название проекта"
             onChange={this.handleNameChange}
           />
         </div>
