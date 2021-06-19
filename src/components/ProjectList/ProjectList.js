@@ -6,22 +6,25 @@ import { ThemeContext } from "../../theme-context";
 
 import { Link } from "react-router-dom";
 import Project from "../Project/Project";
-import ProjectAdd from "../ProjectAdd/ProjectAdd";
+import { ProjectAdd } from "../ProjectAdd/ProjectAdd";
+
+import { connect } from "react-redux";
 
 const cx = classNames.bind(styles);
 
-class ProjectList extends React.Component {
+const mapStateToProps = (state) => ({
+  projects: Object.keys(state.projects.projectsById).map(
+    (id) => state.projects.projectsById[id]
+  ),
+});
+
+class ProjectListComponent extends React.Component {
   static contextType = ThemeContext;
-
-  addProject = (name) => {
-    this.props.addProject(name);
-  };
-
   render() {
     let theme = this.context;
     return (
       <div>
-        <ProjectAdd addProject={this.addProject} />
+        <ProjectAdd />
         <div
           className={cx("project-list", { [`project-list-${theme}`]: true })}
         >
@@ -46,4 +49,4 @@ class ProjectList extends React.Component {
   }
 }
 
-export default ProjectList;
+export const ProjectList = connect(mapStateToProps)(ProjectListComponent);

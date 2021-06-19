@@ -4,9 +4,16 @@ import classNames from "classnames/bind";
 import styles from "./ProjectAdd.module.scss";
 import { ThemeContext } from "../../theme-context";
 
+import { connect } from "react-redux";
+import { handleProjectAdd } from "../../actions/project";
+
 const cx = classNames.bind(styles);
 
-class ProjectAdd extends React.Component {
+const mapDispatchToProps = (dispatch) => ({
+  dispatchOnProjectAdd: (name) => dispatch(handleProjectAdd(name)),
+});
+
+class ProjectAddComponent extends React.Component {
   static contextType = ThemeContext;
 
   state = {
@@ -18,7 +25,7 @@ class ProjectAdd extends React.Component {
   };
 
   handleAddClick = () => {
-    this.props.addProject(this.state.name);
+    this.props.dispatchOnProjectAdd(this.state.name);
   };
 
   render() {
@@ -56,4 +63,7 @@ class ProjectAdd extends React.Component {
   }
 }
 
-export default ProjectAdd;
+export const ProjectAdd = connect(
+  null,
+  mapDispatchToProps
+)(ProjectAddComponent);

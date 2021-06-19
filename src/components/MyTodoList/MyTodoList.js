@@ -1,23 +1,32 @@
 import React from "react";
 import Task from "../Task/Task";
-import TaskAdd from "../TaskAdd/TaskAdd";
+import { TaskAdd } from "../TaskAdd/TaskAdd";
 
 import classNames from "classnames/bind";
 import styles from "./MyTodoList.module.scss";
 import { ThemeContext } from "../../theme-context";
 import { Redirect } from "react-router-dom";
 
+import { connect } from "react-redux";
+import { handleTaskComplete } from "../../actions/task";
+
 const cx = classNames.bind(styles);
 
-class MyTodoList extends React.Component {
+const mapStateToProps = (state) => ({
+  projectsById: state.projects.projectsById,
+  tasksById: state.tasks.tasksById,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  dispatchOnTaskComplete: (id, completed) =>
+    dispatch(handleTaskComplete(id, completed)),
+});
+
+class MyTodoListComponent extends React.Component {
   static contextType = ThemeContext;
 
   completeTask = (id, completed) => {
-    this.props.completeTask(id, completed);
-  };
-
-  addTask = (name, description) => {
-    this.props.addTask(name, description, this.props.match.params.projectId);
+    this.props.dispatchOnTaskComplete(id, completed);
   };
 
   render() {
@@ -27,7 +36,7 @@ class MyTodoList extends React.Component {
         {!this.props.projectsById[this.props.match.params.projectId] && (
           <Redirect to="/" />
         )}
-        <TaskAdd addTask={this.addTask} />
+        <TaskAdd projectId={this.props.match.params.projectId} />
         <div className={cx("task-list", { [`task-list-${theme}`]: true })}>
           <h1
             className={cx("task-list-title", {
@@ -72,4 +81,7 @@ class MyTodoList extends React.Component {
   }
 }
 
-export default MyTodoList;
+export const MyTodoList = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MyTodoListComponent);

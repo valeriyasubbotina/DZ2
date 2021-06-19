@@ -4,9 +4,25 @@ import classNames from "classnames/bind";
 import styles from "./TaskAdd.module.scss";
 import { ThemeContext } from "../../theme-context";
 
+import { connect } from "react-redux";
+import { handleTaskAdd } from "../../actions/task";
+import { handleProjectAddTask } from "../../actions/project";
+
 const cx = classNames.bind(styles);
 
-class TaskAdd extends React.Component {
+const mapStateToProps = (state) => ({
+  lastTaskId: state.tasks.lastTaskId,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  dispatchOnTaskAdd: (name, description, projectId) =>
+    dispatch(handleTaskAdd(name, description, projectId)),
+  dispatchOnProjectAddTask: (projectId, taskId) => {
+    dispatch(handleProjectAddTask(projectId, taskId));
+  },
+});
+
+class TaskAddComponent extends React.Component {
   static contextType = ThemeContext;
 
   state = {
@@ -23,7 +39,15 @@ class TaskAdd extends React.Component {
   };
 
   handleAddClick = () => {
-    this.props.addTask(this.state.name, this.state.description);
+    const taskId = this.props.lastTaskId + 1;
+
+    this.props.dispatchOnTaskAdd(
+      this.state.name,
+      this.state.description,
+      this.props.projectId
+    );
+
+    this.props.dispatchOnProjectAddTask(this.props.projectId, taskId);
   };
 
   render() {
@@ -71,4 +95,7 @@ class TaskAdd extends React.Component {
   }
 }
 
-export default TaskAdd;
+export const TaskAdd = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TaskAddComponent);
